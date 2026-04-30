@@ -32,20 +32,14 @@ contract Voting {
     }
 
     // ─── Constructor ────────────────────────────
-    constructor(string[] memory _candidateNames) {
-        owner = msg.sender;
-        votingOpen = false;
+   constructor() {
+    owner = msg.sender;
+    votingOpen = false;
 
-        for (uint256 i = 0; i < _candidateNames.length; i++) {
-            candidates.push(
-                Candidate({
-                    name: _candidateNames[i],
-                    voteCount: 0
-                })
-            );
-        }
-    }
-
+    candidates.push(Candidate({name: "Alice", voteCount: 0}));
+    candidates.push(Candidate({name: "Bob", voteCount: 0}));
+    candidates.push(Candidate({name: "Charlie", voteCount: 0}));
+}
     // ─── Functions ──────────────────────────────
     function startVoting() external onlyOwner {
         votingOpen = true;
